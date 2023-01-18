@@ -20,6 +20,7 @@ function App() {
   // console.log(dynamicExpense);
   const [filteredYear, setFilteredYear] = useState("2022");
 
+
   const addExpenseHandler = (expense) => {
     // console.log('from app.js')
     // console.log(expense)
@@ -30,6 +31,14 @@ function App() {
  const filterChangeHandler = (selctedYear) => {
      setFilteredYear(selctedYear);
   };
+
+
+
+  // for filterYearly
+   const filterExpenseYearly = dynamicExpense.filter((entry)=>{
+     return entry.date.getFullYear().toString() == dynamicExpense
+   })
+
   return (
     <div>
       <h1>Expense items</h1>
@@ -43,7 +52,7 @@ function App() {
       />
        
     {
-    dynamicExpense.map((key) => (
+    filterExpenseYearly.map((key) => (
       
         <ExpenseList 
         key={Math.random()}
