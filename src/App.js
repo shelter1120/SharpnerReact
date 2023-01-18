@@ -39,6 +39,21 @@ function App() {
      return entry.date.getFullYear().toString() == dynamicExpense
    })
 
+
+let conditionShortCut = <p>No Expense found</p>
+//its checks both 
+if(filterExpenseYearly>0){
+  conditionShortCut = filterExpenseYearly.map((key) => (
+      
+    <ExpenseList 
+    key={Math.random()}
+      date={key.date}
+      title={key.title}
+      amount={key.amount}
+    />
+  ))
+}
+
   return (
     <div>
       <h1>Expense items</h1>
@@ -51,16 +66,8 @@ function App() {
         onChangeFilter={filterChangeHandler}
       />
        
-    {
-    filterExpenseYearly.map((key) => (
-      
-        <ExpenseList 
-        key={Math.random()}
-          date={key.date}
-          title={key.title}
-          amount={key.amount}
-        />
-      ))}
+         {conditionShortCut}
+
       {/* <ExpenseList date={expense[1].date} title={expense[1].title} amount={expense[1].amount} />  */}
     </div>
   );
