@@ -18,8 +18,9 @@ function App() {
   const [dynamicExpense, setdynamicExpense] = useState(dummyExpense);//ask why useState used dummyExpense
   
   // console.log(dynamicExpense);
-  const [filteredYear, setFilteredYear] = useState("2022");
+  const [filteredYear, setFilteredYear] = useState('2022');
 
+//after submit 
 
   const addExpenseHandler = (expense) => {
     // console.log('from app.js')
@@ -36,13 +37,13 @@ function App() {
 
   // for filterYearly
    const filterExpenseYearly = dynamicExpense.filter((entry)=>{
-     return entry.date.getFullYear().toString() == dynamicExpense
+     return entry.date.getFullYear().toString() === filteredYear
    })
 
 
 let conditionShortCut = <p>No Expense found</p>
 //its checks both 
-if(filterExpenseYearly>0){
+if(filterExpenseYearly.length>0){
   conditionShortCut = filterExpenseYearly.map((key) => (
       
     <ExpenseList 
